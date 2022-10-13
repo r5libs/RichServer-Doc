@@ -151,6 +151,9 @@
 ```bash
 - response:
   int error 0: 成功, -1: chatId不存在, -2: from不存在, -3: from不再聊天室, -4: messageId重複記錄, -5: from被禁言/封鎖
+  
+    case error == 0:
+      uint64 opRevision from玩家最新的opRevision
 ```
 
 ## 功能: syncMessage 同步聊天室訊息
