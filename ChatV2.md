@@ -142,18 +142,15 @@
 ```bash
 - request:
   string chatId 聊天室ID
+  string from 訊息傳送者ID
   string messageId 訊息ID
-  int messageSource 0: 該筆訊息是由玩家傳送
   binary receipt 該筆訊息要紀錄的資料, 供往後同步使用(Google Protocol Buffer格式)
-  list<{userId, opRevision}> userList 聊天室所有玩家的同步狀態
+  // list<{userId, opRevision}> userList 聊天室所有玩家的同步狀態
 ```
 
 ```bash
 - response:
-  int error 0: 成功, -1: chatId不存在, -2: userId不存在, -3: userId不再聊天室, -4: messageId重複記錄, -5: opRevision重複記錄, -6: 被禁言/封鎖
-
-    case error == -5:
-      string userId opRevision重複記錄的玩家ID
+  int error 0: 成功, -1: chatId不存在, -2: from不存在, -3: from不再聊天室, -4: messageId重複記錄, -5: from被禁言/封鎖
 ```
 
 ## 功能: syncMessage 同步聊天室訊息
