@@ -170,6 +170,5 @@
   int error 0: 成功, -1: chatId不存在, -2: start不存在
 
   case error == 0:
-    // list<{chatId, messageId, receipt}> messageList
-    list<receipt> messageList (receipt有紀錄{chatId, messageId}, 所以不用再另外給)
+    list<{opRevision, receipt}> messageList
 ```
