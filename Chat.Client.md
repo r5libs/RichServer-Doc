@@ -1,12 +1,13 @@
-## Server Api 相關格式?
+## 如何呼叫 Server Api?
 
 ```bash
-- 完整的Api名稱(xxx.yyy)
+- 完整的Api名稱(xxx.yyy[Message/Request/Response/Receipt])
   xxx: server名稱
   yyy: Api名稱
+  範例: chat.SendImageRequest, chat.SendTextResponse, chat.SendTextReceipt 等
 
 - 請求不等候回應(Message)
-  SocketChannel.SendMessage("xxx.yyy", new aaaRequest()
+  SocketChannel.SendMessage("xxx.yyy", new aaaMessage()
   {
 
   });
@@ -38,9 +39,19 @@
 ## 如何接收由 Server 主動通知的訊息?
 
 ```bash
-在SocketChannel.Message加入訊息處理函式, 以下為可能的messageType列表:
-  - chat.SendMessageFailed // 當SendText/SendImage等Api執行失敗時
-  - chat.SendReceiptMessage // 當聊天室內容有更動時
+SocketChannel.Message += (string messageType, byte[] messagePayload) =>
+{
+  switch (messageType)
+  {
+    // 通知訊息傳送失敗(SendText/SendImage等Api執行失敗時)
+    case "chat.SendMessageFailed":
+      break;
+
+    // 通知有新增的聊天室內容
+    case "chat.SendReceiptMessage":
+      break;
+  }
+};
 ```
 
 ## 如何取得 MessageResponseException 的 ErrorCode
@@ -96,6 +107,13 @@ SocketChannel.SendRequest("xxx.yyy", new aaaRequest()
 });
 ```
 
+## 關於公頻?
+```bash
+- 公頻ID可由Chat.OfficialGroupId取得
+
+- 公頻訊息不會被FetchMessage回傳, 也就是不會被同步. 玩家在線時, 僅可透過server通知(chat.SendReceiptMessage)取得, 其UserReceiptMessage.OpRevision為0
+```
+
 ## Api - login.VerifyUser 登入驗證
 
 ```bash
@@ -126,7 +144,7 @@ UseChatRequest:
 
 ```bash
 UseChatResponse:
-  uint64 LastOpRevision; // 最後一筆訊息紀錄
+  uint64 LastOpRevision; // 最後一筆訊息紀錄ID
 ```
 
 ```bash
@@ -336,4 +354,26 @@ MessageResponseException:
     -6: 訊息接收者不在聊天室
     -7: 已讀狀態只支援私聊
     -16384: 內部錯誤
+```
+
+## chat.SendMessageFailed 通知訊息傳送失敗
+
+```bash
+SendMessageFailedMessage:
+  string ChatId; // 聊天室ID
+  string MessageId; // 訊息ID
+```
+
+## chat.SendReceiptMessage 通知有新增的聊天室內容
+
+```bash
+ReceiptMessage:
+  string MessageType; // 某Api的回執訊息. 一般都是xxx.yyyReceipt形式的名稱
+  bytes MessageContent; // 該回執實際紀錄的訊息內容. 對應yyyReceipt的訊息結構, 如SendTextReceipt
+```
+
+```bash
+UserReceiptMessage:
+  uint64 OpRevision; // 該筆回執訊息紀錄ID
+  bytes ReceiptMessage; // 對應ReceiptMessage結構
 ```
