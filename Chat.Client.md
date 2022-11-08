@@ -113,7 +113,7 @@ SocketChannel.SendRequest("xxx.yyy", new aaaRequest()
 ```bash
 - 公頻ID可由Chat.OfficialGroupId取得
 
-- 公頻訊息不會被FetchMessage回傳, 也就是不會被同步. 玩家在線時, 僅可透過server通知(chat.SendReceiptMessage)取得, 其UserReceiptMessage.OpRevision為0
+- 公頻訊息不會被FetchMessage回傳, 也就是不會被同步. 玩家在線時, 可透過server通知(chat.SendReceiptMessage)取得, 其UserReceiptMessage.OpRevision為0
 ```
 
 ## Api - login.VerifyUser 登入驗證
@@ -370,12 +370,12 @@ SendMessageFailedMessage:
 
 ```bash
 ReceiptMessage:
-  string MessageType; // 某Api的回執訊息. 一般都是xxx.yyyReceipt形式的名稱
+  string MessageType; // 某Api的回執訊息名稱. 一般都是xxx.yyyReceipt的形式
   bytes MessageContent; // 該回執實際紀錄的訊息內容. 對應yyyReceipt的訊息結構, 如SendTextReceipt
 ```
 
 ```bash
 UserReceiptMessage:
-  uint64 OpRevision; // 該筆回執訊息紀錄ID
+  uint64 OpRevision; // 該筆回執訊息紀錄ID(App必須持續記錄此值. 下次開啟App時, 使用FetchMessage進行訊息同步)
   bytes ReceiptMessage; // 對應ReceiptMessage結構
 ```
