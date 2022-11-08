@@ -1,27 +1,38 @@
-## 如何呼叫 Server Api?
+## Server Api 相關格式?
 
 ```bash
-[方式1]
-xxxResponse response = await SocketChannel.SendRequest<xxxRequest, xxxResponse>("xxx.yyy", new xxxRequest()
-{
+- 完整的Api名稱(xxx.yyy)
+  xxx: server名稱
+  yyy: Api名稱
 
-});
-
-[方式2]
-SocketChannel.SendRequest("xxx.yyy", new xxxRequest()
-{
-
-}, (Exception error, xxxResponse response) =>
-{
-  if (error != null)
+- 請求不等候回應(Message)
+  SocketChannel.SendMessage("xxx.yyy", new aaaRequest()
   {
 
-  }
-  else
+  });
+
+- 請求並等候回應(Request/Response)
+  [方式1]
+  aaaResponse response = await SocketChannel.SendRequest<aaaRequest, aaaResponse>("xxx.yyy", new aaaRequest()
   {
 
-  }
-});
+  });
+
+  [方式2]
+  SocketChannel.SendRequest("xxx.yyy", new aaaRequest()
+  {
+
+  }, (Exception error, aaaResponse response) =>
+  {
+    if (error != null)
+    {
+
+    }
+    else
+    {
+
+    }
+  });
 ```
 
 ## 如何接收由 Server 主動通知的訊息?
@@ -40,7 +51,7 @@ SocketChannel.SendRequest("xxx.yyy", new xxxRequest()
 [方式1]
 try
 {
-  xxxResponse response = await SocketChannel.SendRequest<xxxRequest, xxxResponse>("xxx.yyy", new xxxRequest()
+  aaaResponse response = await SocketChannel.SendRequest<aaaRequest, aaaResponse>("xxx.yyy", new aaaRequest()
   {
 
   });
@@ -60,10 +71,10 @@ catch(Exception e)
 }
 
 [方式2]
-SocketChannel.SendRequest("xxx.yyy", new xxxRequest()
+SocketChannel.SendRequest("xxx.yyy", new aaaRequest()
 {
 
-}, (Exception error, xxxResponse response) =>
+}, (Exception error, aaaResponse response) =>
 {
   if (error != null)
   {
@@ -85,7 +96,7 @@ SocketChannel.SendRequest("xxx.yyy", new xxxRequest()
 });
 ```
 
-## login.VerifyUser 登入驗證
+## Api - login.VerifyUser 登入驗證
 
 ```bash
 VerifyUserRequest:
@@ -106,7 +117,7 @@ MessageResponseException:
     -3: 玩家已登入
 ```
 
-## chat.UseChat 使用聊天服務
+## Api - chat.UseChat 使用聊天服務
 
 ```bash
 UseChatRequest:
@@ -129,7 +140,7 @@ MessageResponseException:
     -16384: 內部錯誤
 ```
 
-## chat.JoinChat 加入聊天室
+## Api - chat.JoinChat 加入聊天室
 
 ```bash
 JoinChatRequest:
@@ -160,7 +171,7 @@ MessageResponseException:
     -7: 無法加入聊天室
 ```
 
-## chat.LeaveChat 離開聊天室
+## Api - chat.LeaveChat 離開聊天室
 
 ```bash
 LeaveChatRequest:
@@ -190,7 +201,7 @@ MessageResponseException:
     -6: 無法離開聊天室
 ```
 
-## chat.SendText 傳送文字訊息
+## Api - chat.SendText 傳送文字訊息
 
 ```bash
 SendTextRequest:
@@ -226,7 +237,7 @@ MessageResponseException:
     -16384: 內部錯誤
 ```
 
-## chat.SendImage 傳送影像訊息
+## Api - chat.SendImage 傳送影像訊息
 
 ```bash
 SendImageRequest:
@@ -272,7 +283,7 @@ MessageResponseException:
     -16384: 內部錯誤
 ```
 
-## chat.FetchMessage 獲取聊天室訊息
+## Api - chat.FetchMessage 獲取聊天室訊息
 
 ```bash
 FetchMessageRequest:
@@ -294,7 +305,7 @@ MessageResponseException:
     -4: Count太大
 ```
 
-## chat.SendMessageRead 傳送訊息已讀通知
+## Api - chat.SendMessageRead 傳送訊息已讀通知
 
 ```bash
 SendImageRequest:
