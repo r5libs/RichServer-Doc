@@ -4,15 +4,16 @@
 - 完整的Api名稱(xxx.yyy[Message/Request/Response/Receipt])
   xxx: server名稱
   yyy: Api名稱
-  範例: chat.SendImageRequest, chat.SendTextResponse, chat.SendTextReceipt 等
 
-- 請求不等候回應(Message)
+  範例: chat.SendImageRequest, chat.SendTextResponse, chat.SendTextReceipt
+
+- 請求Api, 不等候回應(Message)
   SocketChannel.SendMessage("xxx.yyy", new aaaMessage()
   {
 
   });
 
-- 請求並等候回應(Request/Response)
+- 請求Api, 並等候回應(Request/Response)
   [方式1]
   aaaResponse response = await SocketChannel.SendRequest<aaaRequest, aaaResponse>("xxx.yyy", new aaaRequest()
   {
@@ -108,6 +109,7 @@ SocketChannel.SendRequest("xxx.yyy", new aaaRequest()
 ```
 
 ## 關於公頻?
+
 ```bash
 - 公頻ID可由Chat.OfficialGroupId取得
 
