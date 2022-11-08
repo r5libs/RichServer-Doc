@@ -3,7 +3,7 @@
 ```bash
   string serverIp = "192.168.1.114";
   int serverPort = 26345;
-  using SocketChannel s = await SocketConnector.Connect(serverIp, serverPort);
+  SocketChannel s = await SocketConnector.Connect(serverIp, serverPort);
 ```
 
 ## 如何呼叫 Server Api?
