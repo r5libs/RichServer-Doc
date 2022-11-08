@@ -45,10 +45,10 @@
   });
 ```
 
-### Server Api 相關類別
+### Server Api 訊息結構
 
 ```bash
-  假設Api名稱為login.VerifyUser, 則可能的相關類別如下:
+  假設Api名稱為login.VerifyUser, 則可能的訊息結構如下:
     - VerifyUserMessage
     - VerifyUserRequest
     - VerifyUserResponse
