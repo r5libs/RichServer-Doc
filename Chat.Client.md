@@ -48,13 +48,13 @@
 ### Server Api 訊息結構
 
 ```bash
-  假設Api名稱為login.VerifyUser, 則可能存在下列訊息結構:
+  假設Api名稱為login.VerifyUser, 則可能存在下列幾種訊息結構:
     - VerifyUserMessage
     - VerifyUserRequest
     - VerifyUserResponse
     - VerifyUserReceipt
 
-  以上訊息結構又可分為下列幾種形式:
+  以上訊息結構又可組合成下列幾種形式:
     - VerifyUserMessage 請求不回應的形式
     - VerifyUserRequest, VerifyUserResponse 請求並回應的形式
     - VerifyUserRequest, VerifyUserResponse, VerifyUserReceipt 請求並回應且有回執的形式
