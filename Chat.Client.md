@@ -1,11 +1,19 @@
+## 如何建立 SocketChannel
+
+```bash
+  string serverIp = "192.168.1.114";
+  int serverPort = 26345;
+  using SocketChannel s = await SocketConnector.Connect(serverIp, serverPort);
+```
+
 ## 如何呼叫 Server Api?
 
 ```bash
-- 完整的Api名稱(xxx.yyy[Message/Request/Response/Receipt])
+- 完整的Api名稱(xxx.yyy)
   xxx: server名稱
   yyy: Api名稱
 
-  範例: chat.SendImageRequest, chat.SendTextResponse, chat.SendTextReceipt
+  範例: login.VerifyUser, chat.SendImage 等
 
 - 請求Api, 不等候回應(Message)
   SocketChannel.SendMessage("xxx.yyy", new aaaMessage()
@@ -35,6 +43,23 @@
 
     }
   });
+```
+
+### Server Api 相關類別
+
+```bash
+  假設Api名稱為login.VerifyUser, 則可能的相關類別如下:
+    - VerifyUserMessage
+    - VerifyUserRequest
+    - VerifyUserResponse
+    - VerifyUserReceipt
+
+  以上4種可能存在下列形式:
+    - VerifyUserMessage 請求不回應的形式
+    - VerifyUserRequest, VerifyUserResponse 請求並回應的形式
+    - VerifyUserRequest, VerifyUserResponse, VerifyUserReceipt 請求並回應且有回執的形式
+
+  具體用法可察看後續的Api介紹
 ```
 
 ## 如何接收由 Server 主動通知的訊息?
@@ -113,7 +138,20 @@ SocketChannel.SendRequest("xxx.yyy", new aaaRequest()
 ```bash
 - 公頻ID可由Chat.OfficialGroupId取得
 
-- 公頻訊息不會被FetchMessage回傳, 也就是不會被同步. 玩家在線時, 可透過server通知(chat.SendReceiptMessage)取得, 其UserReceiptMessage.OpRevision為0
+- 公頻訊息不會經由FetchMessage回傳, 也就是不會被同步. 玩家在線時, 可透過server通知(chat.SendReceiptMessage)取得, 其UserReceiptMessage.OpRevision為0
+```
+
+## Api - gate.QueryConnector 取得適合登入的 Connector Server
+
+```bash
+QueryConnectorRequest:
+```
+
+```bash
+QueryConnectorResponse:
+  string Name; // Connector Server Name
+  string Host; // Connector Server Host
+  int32 Port; // Connector Server Port
 ```
 
 ## Api - login.VerifyUser 登入驗證
@@ -225,7 +263,7 @@ MessageResponseException:
 
 ```bash
 SendTextRequest:
-  string To; // 傳送給誰. 如果是私聊, 此欄位為玩家ID, 其餘為該聊天室的ID
+  string To; // 傳送給誰. 如果是私聊, 此欄位為玩家ID, 其餘為聊天室的ID
   string Text; // 文字內容
   string RelatedMessageId; // 回覆訊息ID. 如果是要回覆某筆訊息, 此欄位為該筆訊息的ID, 否則為空字串
 ```
@@ -238,7 +276,7 @@ SendTextResponse:
 ```bash
 SendTextReceipt:
   string From; // 訊息發送者ID
-  string To; // 訊息接收者ID. 如果是私聊, 此欄位為玩家ID, 其餘為該聊天室的ID
+  string To; // 訊息接收者ID. 如果是私聊, 此欄位為玩家ID, 其餘為聊天室的ID
   string MessageId; // 訊息ID
   int64 Timestamp; // 時間戳記
   string RelatedMessageId; //回覆訊息ID
@@ -261,7 +299,7 @@ MessageResponseException:
 
 ```bash
 SendImageRequest:
-  string To; // 傳送給誰. 如果是私聊, 此欄位為玩家ID, 其餘為該聊天室的ID
+  string To; // 傳送給誰. 如果是私聊, 此欄位為玩家ID, 其餘為聊天室的ID
   string RelatedMessageId; // 回覆訊息ID. 如果是要回覆某筆訊息, 此欄位為該筆訊息的ID, 否則為空字串
 ```
 
@@ -274,7 +312,7 @@ SendImageResponse:
 ```bash
 SendImageReceipt:
   string From; // 訊息發送者ID
-  string To; // 訊息接收者ID. 如果是私聊, 此欄位為玩家ID, 其餘為該聊天室的ID
+  string To; // 訊息接收者ID. 如果是私聊, 此欄位為玩家ID, 其餘為聊天室的ID
   string MessageId; // 訊息ID
   int64 Timestamp; // 時間戳記
   string RelatedMessageId; //回覆訊息ID
@@ -284,7 +322,7 @@ SendImageReceipt:
 ```bash
 SendImageCheckedReceipt:
   string From; // 訊息發送者ID
-  string To; // 訊息接收者ID. 如果是私聊, 此欄位為玩家ID, 其餘為該聊天室的ID
+  string To; // 訊息接收者ID. 如果是私聊, 此欄位為玩家ID, 其餘為聊天室的ID
   string MessageId; // 訊息ID. 這是影像已上傳完畢所產生的訊息ID
   int64 Timestamp; // 時間戳記
   string OriginalMessageId; // 訊息ID. 這是原本SendImageRequest所產生的訊息ID, 也就是SendImageResponse.MessageId
@@ -329,7 +367,7 @@ MessageResponseException:
 
 ```bash
 SendImageRequest:
-  string To; // 傳送給誰. 如果是私聊, 此欄位為玩家ID, 其餘為該聊天室的ID
+  string To; // 傳送給誰. 如果是私聊, 此欄位為玩家ID, 其餘為聊天室的ID
 ```
 
 ```bash
@@ -339,7 +377,7 @@ SendImageResponse:
 ```bash
 SendImageReceipt:
   string From; // 訊息發送者ID
-  string To; // 訊息接收者ID. 如果是私聊, 此欄位為玩家ID, 其餘為該聊天室的ID
+  string To; // 訊息接收者ID. 如果是私聊, 此欄位為玩家ID, 其餘為聊天室的ID
   string MessageId; // 訊息ID. 這是影像已上傳完畢所產生的訊息ID
   int64 Timestamp; // 時間戳記
   string LastReadMessageId; // 最後一筆已讀訊息ID. 這表示在這之前的訊息ID都是已讀的
