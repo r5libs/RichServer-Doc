@@ -59,7 +59,7 @@
     - VerifyUserRequest, VerifyUserResponse 請求並回應的形式
     - VerifyUserRequest, VerifyUserResponse, VerifyUserReceipt 請求並回應且有回執的形式
 
-  具體用法可察看後續的Api介紹
+  具體用法可查看後續的Api介紹
 ```
 
 ## 如何接收由 Server 主動通知的訊息?
