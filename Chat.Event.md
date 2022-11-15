@@ -89,7 +89,6 @@ curl -X POST -H 'Content-Type: application/x-www-form-urlencoded' -d 'data={"typ
 request:
   string chatId; 聊天室ID
   string userId; 玩家ID
-  int enabled; 0: 沒禁言, 1: 被禁言
   int timeLimit; 0: 沒禁言, >0: 被禁言的時間(分鐘)
 ```
 
@@ -101,5 +100,5 @@ response:
 
 ```bash
 example:
-curl -X POST -H 'Content-Type: application/x-www-form-urlencoded' -d 'data={"type":"muteUser","payload":{"chatId":"1111","userId":"2222"}}' http://192.168.1.114:17558/
+curl -X POST -H 'Content-Type: application/x-www-form-urlencoded' -d 'data={"type":"muteUser","payload":{"chatId":"1111","userId":"2222","timeLimit":0}}' http://192.168.1.114:17558/
 ```
