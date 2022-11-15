@@ -83,7 +83,7 @@ example:
 curl -X POST -H 'Content-Type: application/x-www-form-urlencoded' -d 'data={"type":"dismissChat","payload":{"chatIds":["1111","2222"]}' http://192.168.1.114:17558/
 ```
 
-## 功能: muteUser
+## 功能: muteUser 通知玩家禁言
 
 ```bash
 request:
