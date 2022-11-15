@@ -1,4 +1,5 @@
-## DB通知Server
+## DB 通知 Server
+
 ```bash
 Method: POST
 Url: http://192.168.1.114:17558/
@@ -62,4 +63,43 @@ response:
 ```bash
 example:
 curl -X POST -H 'Content-Type: application/x-www-form-urlencoded' -d 'data={"type":"leaveChat","payload":{"chatId":"1111","userId":"2222"}}' http://192.168.1.114:17558/
+```
+
+## 功能: dismissChat 通知玩家解散聊天群組
+
+```bash
+request:
+  string[] chatIds; 聊天室ID
+```
+
+```bash
+response:
+  int error: 0: 成功, -1: 失敗
+  string message: 錯誤訊息
+```
+
+```bash
+example:
+curl -X POST -H 'Content-Type: application/x-www-form-urlencoded' -d 'data={"type":"dismissChat","payload":{"chatIds":["1111","2222"]}' http://192.168.1.114:17558/
+```
+
+## 功能: muteUser
+
+```bash
+request:
+  string chatId; 聊天室ID
+  string userId; 玩家ID
+  int enabled; 0: 沒禁言, 1: 被禁言
+  int timeLimit; 0: 沒禁言, >0: 被禁言的時間(分鐘)
+```
+
+```bash
+response:
+  int error: 0: 成功, -1: 失敗
+  string message: 錯誤訊息
+```
+
+```bash
+example:
+curl -X POST -H 'Content-Type: application/x-www-form-urlencoded' -d 'data={"type":"muteUser","payload":{"chatId":"1111","userId":"2222"}}' http://192.168.1.114:17558/
 ```
