@@ -417,3 +417,29 @@ UserReceiptMessage:
   uint64 OpRevision; // 該筆回執訊息紀錄ID(App必須持續記錄此值. 下次開啟App時, 使用FetchMessage進行訊息同步)
   bytes ReceiptMessage; // 對應ReceiptMessage結構
 ```
+
+## chat.DismissChatMessage 通知解散聊天室
+
+```bash
+DismissChatMessage:
+  string ChatId; // 聊天室ID
+```
+
+## chat.MuteChatMessage 通知聊天室成員已設定禁言
+
+```bash
+MuteChatMessage:
+  string ChatId; // 聊天室ID
+  string MemberId; // 聊天室成員ID(玩家ID)
+  int64 Timestamp; // 時間戳記(設定禁言時間)
+  int32 TimeLimit; // 禁言的時間(分鐘)
+```
+
+## chat.UnmuteChatMessage 通知聊天室成員已取消禁言
+
+```bash
+MuteChatMessage:
+  string ChatId; // 聊天室ID
+  string MemberId; // 聊天室成員ID(玩家ID)
+  int64 Timestamp; // 時間戳記(取消禁言時間)
+```
