@@ -75,6 +75,24 @@ SocketChannel.Message += (string messageType, byte[] messagePayload) =>
 
     // 通知有新增的聊天室內容
     case "chat.SendReceiptMessage":
+      // JoinChatReceipt
+      // LeaveChatReceipt
+      // SendTextReceipt
+      // SendImageReceipt
+      // SendImageCheckedReceipt
+      // SendMessageReadReceipt
+      break;
+
+    // 通知解散聊天室
+    case "chat.DismissChatMessage":
+      break;
+
+    // 通知聊天室成員已設定禁言
+    case "chat.MuteChatMessage":
+      break;
+
+    // 通知聊天室成員已取消禁言
+    case "chat.UnmuteChatMessage":
       break;
   }
 };
@@ -366,16 +384,16 @@ MessageResponseException:
 ## Api - chat.SendMessageRead 傳送訊息已讀通知
 
 ```bash
-SendImageRequest:
+SendMessageReadRequest:
   string To; // 傳送給誰. 如果是私聊, 此欄位為玩家ID, 其餘為聊天室的ID
 ```
 
 ```bash
-SendImageResponse:
+SendMessageReadResponse:
 ```
 
 ```bash
-SendImageReceipt:
+SendMessageReadReceipt:
   string From; // 訊息發送者ID
   string To; // 訊息接收者ID. 如果是私聊, 此欄位為玩家ID, 其餘為聊天室的ID
   string MessageId; // 訊息ID. 這是影像已上傳完畢所產生的訊息ID
