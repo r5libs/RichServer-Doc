@@ -398,7 +398,7 @@ SendMessageReadReceipt:
   string To; // 訊息接收者ID. 如果是私聊, 此欄位為玩家ID, 其餘為聊天室的ID
   string MessageId; // 訊息ID. 這是影像已上傳完畢所產生的訊息ID
   int64 Timestamp; // 時間戳記
-  string LastReadMessageId; // 最後一筆已讀訊息ID. 這表示在這之前的訊息ID都是已讀的
+  string LastReadMessageId; // 最後一筆已讀訊息ID. 表示在這之前的訊息(包含這筆)都是已讀的
 ```
 
 ```bash
