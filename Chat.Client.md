@@ -10,7 +10,7 @@
 
 ```bash
 - 完整的Api名稱(xxx.yyy)
-  xxx: server名稱
+  xxx: Server名稱
   yyy: Api名稱
 
   範例: login.VerifyUser, chat.SendImage 等
