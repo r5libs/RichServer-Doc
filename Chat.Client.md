@@ -77,10 +77,12 @@ SocketChannel.Message += (string messageType, byte[] messagePayload) =>
     case "chat.SendReceiptMessage":
       // JoinChatReceipt
       // LeaveChatReceipt
+      // KickoutFromChatReceipt
       // SendTextReceipt
       // SendImageReceipt
       // SendImageCheckedReceipt
       // SendMessageReadReceipt
+      // RemoveMessageReceipt
       break;
 
     // 通知解散聊天室
@@ -277,6 +279,16 @@ MessageResponseException:
     -6: 無法離開聊天室
 ```
 
+## Api - chat.KickoutFromChat 剔除聊天室
+
+```bash
+KickoutFromChatReceipt:
+  string ChatId; // 聊天室ID
+  string MemberId; // 聊天室成員ID(玩家ID)
+  string MessageId; // 訊息ID
+  int64 Timestamp; // 時間戳記
+```
+
 ## Api - chat.SendText 傳送文字訊息
 
 ```bash
@@ -412,6 +424,15 @@ MessageResponseException:
     -6: 訊息接收者不在聊天室
     -7: 已讀狀態只支援私聊
     -16384: 內部錯誤
+```
+
+## Api - chat.RemoveMessageReceipt 移除訊息
+
+```bash
+RemoveMessageReceipt:
+  string ChatId; // 聊天室ID
+  string MessageIds; // 移除的訊息ID陣列
+  int64 Timestamp; // 時間戳記
 ```
 
 ## chat.SendMessageFailed 通知訊息傳送失敗
