@@ -65,6 +65,25 @@ example:
 curl -X POST -H 'Content-Type: application/x-www-form-urlencoded' -d 'data={"type":"leaveChat","payload":{"chatId":"1111","userId":"2222"}}' http://192.168.1.114:17558/
 ```
 
+## 功能: kickoutFromChat 通知玩家從聊天室踢除
+
+```bash
+request:
+  string chatId; 聊天室ID
+  list<string> userIds; userId列表
+```
+
+```bash
+response:
+  int error: 0: 成功, -1: 失敗
+  string message: 錯誤訊息
+```
+
+```bash
+example:
+curl -X POST -H 'Content-Type: application/x-www-form-urlencoded' -d 'data={"type":"kickoutFromChat","payload":{"chatId":"1111","userIds":["1","2"]}}' http://192.168.1.114:17558/
+```
+
 ## 功能: dismissChat 通知玩家解散聊天群組
 
 ```bash
@@ -80,7 +99,7 @@ response:
 
 ```bash
 example:
-curl -X POST -H 'Content-Type: application/x-www-form-urlencoded' -d 'data={"type":"dismissChat","payload":{"chatIds":["1111","2222"]}' http://192.168.1.114:17558/
+curl -X POST -H 'Content-Type: application/x-www-form-urlencoded' -d 'data={"type":"dismissChat","payload":{"chatIds":["1111","2222"]}}' http://192.168.1.114:17558/
 ```
 
 ## 功能: muteChat 通知玩家禁言
