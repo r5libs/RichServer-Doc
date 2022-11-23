@@ -27,7 +27,7 @@ example:
 curl -X POST -H 'Content-Type: application/x-www-form-urlencoded' -d 'data={"type":"messageContentUploaded","payload":{"chatId":"1111","userId":"2222","messageId":"3333","messageContentUrl":"http://1234/","messageContentType":1}}' http://192.168.1.114:17558/
 ```
 
-## 功能: joinChat 通知玩家已加入聊天群組
+## 功能: joinChat 通知玩家加入聊天群組
 
 ```bash
 request:
@@ -46,7 +46,7 @@ example:
 curl -X POST -H 'Content-Type: application/x-www-form-urlencoded' -d 'data={"type":"joinChat","payload":{"chatId":"1111","userId":"2222"}}' http://192.168.1.114:17558/
 ```
 
-## 功能: leaveChat 通知玩家已離開聊天群組
+## 功能: leaveChat 通知玩家離開聊天群組
 
 ```bash
 request:
