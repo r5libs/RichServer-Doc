@@ -373,6 +373,8 @@ MessageResponseException:
 
 ## Api - chat.FetchMessage 獲取聊天室訊息
 
+> 注意: 在使用 chat.FetchMessage 同步訊息期間, 當聊天室有新增訊息時, chat.SendReceiptMessage 也將會進行通知
+
 ```bash
 FetchMessageRequest:
   uint64 Start; // 從哪一筆訊息開始(opRevision). server會將此值加1, 也就是從下一筆開始
