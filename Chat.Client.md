@@ -83,10 +83,7 @@ SocketChannel.Message += (string messageType, byte[] messagePayload) =>
       // SendImageCheckedReceipt
       // SendMessageReadReceipt
       // RemoveMessageReceipt
-      break;
-
-    // 通知解散聊天室
-    case "chat.DismissChatMessage":
+      // DismissChatReceipt
       break;
 
     // 通知聊天室成員已設定禁言
@@ -437,6 +434,15 @@ RemoveMessageReceipt:
   int64 Timestamp; // 時間戳記
 ```
 
+## Api - chat.DismissChatReceipt 解散聊天室
+
+```bash
+DismissChatReceipt:
+  string ChatId; // 聊天室ID
+  string MessageId; // 訊息ID
+  int64 Timestamp; // 時間戳記
+```
+
 ## chat.SendMessageFailed 通知訊息傳送失敗
 
 ```bash
@@ -457,13 +463,6 @@ ReceiptMessage:
 UserReceiptMessage:
   uint64 OpRevision; // 該筆回執訊息紀錄ID(App必須持續記錄此值. 下次開啟App時, 使用FetchMessage進行訊息同步)
   bytes ReceiptMessage; // 對應ReceiptMessage結構
-```
-
-## chat.DismissChatMessage 通知解散聊天室
-
-```bash
-DismissChatMessage:
-  string ChatId; // 聊天室ID
 ```
 
 ## chat.MuteChatMessage 通知聊天室成員已設定禁言
