@@ -212,7 +212,6 @@ MessageResponseException:
     -3: 玩家重複執行chat.UseChat
     -4: 玩家ChatKey不存在
     -5: 玩家ChatKey比對錯誤
-    -16384: 內部錯誤
 ```
 
 ## Api - chat.JoinChat 加入聊天室
