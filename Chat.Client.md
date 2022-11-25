@@ -208,10 +208,9 @@ UseChatResponse:
 MessageResponseException:
   int ErrorCode;
     -1: 請求參數無效
-    -2: 玩家尚未登入
-    -3: 玩家重複執行chat.UseChat
-    -4: 玩家ChatKey不存在
-    -5: 玩家ChatKey比對錯誤
+    -2: 尚未登入
+    -3: 重複執行chat.UseChat
+    -4: ChatKey不存在/比對錯誤
 ```
 
 ## Api - chat.JoinChat 加入聊天室
