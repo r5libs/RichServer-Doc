@@ -277,11 +277,22 @@ MessageResponseException:
 ## Api - chat.KickoutFromChat 剔除聊天室
 
 ```bash
+KickoutFromChatRequest:
+  string ChatId; // 聊天室ID
+  string MemberIds; // 聊天室成員ID(玩家ID)列表
+```
+
+```bash
+KickoutFromChatResponse:
+  string MessageId; // 訊息ID
+```
+
+```bash
 KickoutFromChatReceipt:
   string ChatId; // 聊天室ID
   string MessageId; // 訊息ID
   int64 Timestamp; // 時間戳記
-  string[] MemberIds; // 聊天室成員ID(玩家ID)陣列
+  string[] KickedoutMemberIds; // 已剔除的聊天室成員ID(玩家ID)陣列
 ```
 
 ## Api - chat.SendText 傳送文字訊息
@@ -425,11 +436,22 @@ MessageResponseException:
 ## Api - chat.RemoveMessageReceipt 移除訊息
 
 ```bash
+RemoveMessageRequest:
+  string ChatId; // 聊天室ID
+  string[] MessageIds; // 訊息ID陣列
+```
+
+```bash
+RemoveMessageResponse:
+  string MessageId; // 訊息ID
+```
+
+```bash
 RemoveMessageReceipt:
   string ChatId; // 聊天室ID
   string MessageId; // 訊息ID
   int64 Timestamp; // 時間戳記
-  string MessageIds; // 移除的訊息ID陣列
+  string[] RemovedMessageIds; // 訊息ID陣列
 ```
 
 ## Api - chat.DismissChatReceipt 解散聊天室
