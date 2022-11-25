@@ -224,26 +224,26 @@ JoinChatRequest:
 
 ```bash
 JoinChatResponse:
+  string MessageId; // 訊息ID
 ```
 
 ```bash
 JoinChatReceipt:
   string ChatId; // 聊天室ID
-  string MemberId; // 聊天室成員ID(玩家ID)
   string MessageId; // 訊息ID
   int64 Timestamp; // 時間戳記
+  string MemberId; // 聊天室成員ID(玩家ID)
 ```
 
 ```bash
 MessageResponseException:
   int ErrorCode;
     -1: 請求參數無效
-    -2: 玩家尚未登入
+    -2: 尚未登入
     -3: 無法取得聊天室
-    -4: 只能加入私人聊天室或公頻
+    -4: 不能加入私人聊天室
     -5: 聊天室人數已滿
     -6: 已在聊天室
-    -7: 無法加入聊天室
 ```
 
 ## Api - chat.LeaveChat 離開聊天室
@@ -255,25 +255,25 @@ LeaveChatRequest:
 
 ```bash
 LeaveChatResponse:
+  string MessageId; // 訊息ID
 ```
 
 ```bash
 LeaveChatReceipt:
   string ChatId; // 聊天室ID
-  string MemberId; // 聊天室成員ID(玩家ID)
   string MessageId; // 訊息ID
   int64 Timestamp; // 時間戳記
+  string MemberId; // 聊天室成員ID(玩家ID)
 ```
 
 ```bash
 MessageResponseException:
   int ErrorCode;
     -1: 請求參數無效
-    -2: 玩家尚未登入
+    -2: 尚未登入
     -3: 無法取得聊天室
-    -4: 只能離開私人聊天室或公頻
+    -4: 不能離開私人聊天室
     -5: 不在聊天室
-    -6: 無法離開聊天室
 ```
 
 ## Api - chat.KickoutFromChat 剔除聊天室
@@ -297,7 +297,7 @@ SendTextRequest:
 
 ```bash
 SendTextResponse:
-  string MessageId; // 訊息ID. 可以用來比對SendTextReceipt.MessageId
+  string MessageId; // 訊息ID
 ```
 
 ```bash
@@ -314,12 +314,11 @@ SendTextReceipt:
 MessageResponseException:
   int ErrorCode;
     -1: 請求參數無效
-    -2: 玩家尚未登入
+    -2: 尚未登入
     -3: 無法取得聊天室
     -4: 訊息傳送者不可為訊息接收者
     -5: 訊息傳送者不在聊天室
     -6: 訊息接收者不在聊天室
-    -16384: 內部錯誤
 ```
 
 ## Api - chat.SendImage 傳送影像訊息
@@ -360,12 +359,12 @@ SendImageCheckedReceipt:
 MessageResponseException:
   int ErrorCode;
     -1: 請求參數無效
-    -2: 玩家尚未登入
+    -2: 尚未登入
     -3: 無法取得聊天室
     -4: 訊息傳送者不可為訊息接收者
     -5: 訊息傳送者不在聊天室
     -6: 訊息接收者不在聊天室
-    -16384: 內部錯誤
+    -7: 被禁言
 ```
 
 ## Api - chat.FetchMessage 獲取聊天室訊息
@@ -401,6 +400,7 @@ SendMessageReadRequest:
 
 ```bash
 SendMessageReadResponse:
+  string MessageId; // 訊息ID
 ```
 
 ```bash
@@ -416,13 +416,12 @@ SendMessageReadReceipt:
 MessageResponseException:
   int ErrorCode;
     -1: 請求參數無效
-    -2: 玩家尚未登入
+    -2: 尚未登入
     -3: 無法取得聊天室
     -4: 訊息傳送者不可為訊息接收者
     -5: 訊息傳送者不在聊天室
     -6: 訊息接收者不在聊天室
     -7: 已讀狀態只支援私聊
-    -16384: 內部錯誤
 ```
 
 ## Api - chat.RemoveMessageReceipt 移除訊息
@@ -471,8 +470,8 @@ UserReceiptMessage:
 ```bash
 MuteChatMessage:
   string ChatId; // 聊天室ID
-  string MemberId; // 聊天室成員ID(玩家ID)
   int64 Timestamp; // 時間戳記(設定禁言時間)
+  string MemberId; // 聊天室成員ID(玩家ID)
   int32 TimeLimit; // 禁言的時間(分鐘)
 ```
 
@@ -481,6 +480,6 @@ MuteChatMessage:
 ```bash
 MuteChatMessage:
   string ChatId; // 聊天室ID
-  string MemberId; // 聊天室成員ID(玩家ID)
   int64 Timestamp; // 時間戳記(取消禁言時間)
+  string MemberId; // 聊天室成員ID(玩家ID)
 ```
