@@ -188,8 +188,8 @@ VerifyUserResponse:
 MessageResponseException:
   int ErrorCode;
     -1: 請求參數無效
-    -2: 玩家Token無效
-    -3: 玩家已登入
+    -2: Token無效
+    -3: 已登入
 ```
 
 ## Api - chat.UseChat 使用聊天服務
@@ -373,7 +373,6 @@ MessageResponseException:
     -4: 訊息傳送者不可為訊息接收者
     -5: 訊息傳送者不在聊天室
     -6: 訊息接收者不在聊天室
-    -7: 被禁言
 ```
 
 ## Api - chat.FetchMessage 獲取聊天室訊息
