@@ -295,6 +295,17 @@ KickoutFromChatReceipt:
   string[] KickedoutMemberIds; // 已剔除的聊天室成員ID(玩家ID)陣列
 ```
 
+```bash
+MessageResponseException:
+  int ErrorCode;
+    -1: 請求參數無效
+    -2: 尚未登入
+    -3: 無法取得聊天室
+    -4: 此功能只支援群組
+    -5: 只有群主才能踢人
+    -6: 指定的聊天成員均不在聊天室
+```
+
 ## Api - chat.SendText 傳送文字訊息
 
 ```bash
@@ -432,7 +443,7 @@ MessageResponseException:
     -7: 已讀狀態只支援私聊
 ```
 
-## Api - chat.RemoveMessageReceipt 移除訊息
+## Api - chat.RemoveMessage 移除訊息
 
 ```bash
 RemoveMessageRequest:
@@ -453,7 +464,18 @@ RemoveMessageReceipt:
   string[] RemovedMessageIds; // 訊息ID陣列
 ```
 
-## Api - chat.DismissChatReceipt 解散聊天室
+```bash
+MessageResponseException:
+  int ErrorCode;
+    -1: 請求參數無效
+    -2: 尚未登入
+    -3: 無法取得聊天室
+    -4: 此功能只支援群組
+    -5: 只有群主才能刪除訊息
+    -6: 指定的聊天訊息均不在聊天室
+```
+
+## Api - chat.DismissChat 解散聊天室
 
 ```bash
 DismissChatReceipt:
