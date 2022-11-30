@@ -1,6 +1,6 @@
 ## 如何建立 SocketChannel?
 
-```bash
+```cs
 // 建立SocketChannel
 string serverIp = "192.168.1.114";
 int serverPort = 26345;
