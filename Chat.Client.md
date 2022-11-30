@@ -1,65 +1,89 @@
-## 如何建立 SocketChannel
+## 如何建立 SocketChannel?
 
 ```bash
-  string serverIp = "192.168.1.114";
-  int serverPort = 26345;
-  SocketChannel s = await SocketConnector.Connect(serverIp, serverPort);
+// 建立SocketChannel
+string serverIp = "192.168.1.114";
+int serverPort = 26345;
+SocketChannel s = await SocketConnector.Connect(serverIp, serverPort);
+
+// 關閉SocketChannel
+s.Dispose();
 ```
 
-## 如何呼叫 Server Api?
+## Server Api 命名規範
 
 ```bash
-- 完整的Api名稱(xxx.yyy)
+[形式1]
+Api名稱: xxx.yyy
   xxx: Server名稱
   yyy: Api名稱
 
-  範例: login.VerifyUser, chat.SendImage 等
+範例: login.VerifyUser, chat.SendImage...
+```
 
-- 請求Api, 不等候回應(Message)
-  SocketChannel.SendMessage("xxx.yyy", new aaaMessage()
-  {
+```bash
+[形式2]
+Api名稱: zzz.yyy
+  zzz: Server類型
+  yyy: Api名稱
 
-  });
+範例: Chat.SendImage...
 
-- 請求Api, 並等候回應(Request/Response)
-  [方式1]
-  aaaResponse response = await SocketChannel.SendRequest<aaaRequest, aaaResponse>("xxx.yyy", new aaaRequest()
-  {
-
-  });
-
-  [方式2]
-  SocketChannel.SendRequest("xxx.yyy", new aaaRequest()
-  {
-
-  }, (Exception error, aaaResponse response) =>
-  {
-    if (error != null)
-    {
-
-    }
-    else
-    {
-
-    }
-  });
+Server端必須提供一個RouteMessage函式, 可用來將訊息轉發到指定的chat(Server名稱)
 ```
 
 ### Server Api 訊息結構
 
 ```bash
-  假設Api名稱為login.VerifyUser, 則可能存在下列幾種訊息結構:
-    - VerifyUserMessage
-    - VerifyUserRequest
-    - VerifyUserResponse
-    - VerifyUserReceipt
+假設Api名稱為login.VerifyUser, 則可能存在下列幾種訊息結構:
+  - VerifyUserMessage
+  - VerifyUserRequest
+  - VerifyUserResponse
+  - VerifyUserReceipt
 
-  以上訊息結構又可組合成下列幾種形式:
-    - VerifyUserMessage 請求不回應的形式
-    - VerifyUserRequest, VerifyUserResponse 請求並回應的形式
-    - VerifyUserRequest, VerifyUserResponse, VerifyUserReceipt 請求並回應且有回執的形式
+以上訊息結構又可組合成下列幾種形式:
+  - VerifyUserMessage 請求不回應的形式
+  - VerifyUserRequest, VerifyUserResponse 請求並回應的形式
+  - VerifyUserRequest, VerifyUserResponse, VerifyUserReceipt 請求並回應且有回執的形式
 
-  具體用法可查看後續的Api介紹
+具體用法可查看後續的Api介紹
+```
+
+## 如何呼叫 Server Api?
+
+```bash
+請求Api, 不等候回應(Message)
+
+SocketChannel.SendMessage("xxx.yyy", new aaaMessage()
+{
+
+});
+```
+
+```bash
+請求Api, 並等候回應(Request/Response)
+
+[方式1]
+aaaResponse response = await SocketChannel.SendRequest<aaaRequest, aaaResponse>("xxx.yyy", new aaaRequest()
+{
+
+});
+
+[方式2]
+SocketChannel.SendRequest("xxx.yyy", new aaaRequest()
+{
+
+}, (Exception error, aaaResponse response) =>
+{
+  if (error != null)
+  {
+
+  }
+  else
+  {
+
+  }
+});
 ```
 
 ## 如何接收由 Server 主動通知的訊息?
