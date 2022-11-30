@@ -75,14 +75,7 @@ SocketChannel.SendRequest("xxx.yyy", new aaaRequest()
 
 }, (Exception error, aaaResponse response) =>
 {
-  if (error != null)
-  {
 
-  }
-  else
-  {
-
-  }
 });
 ```
 
@@ -485,7 +478,7 @@ RemoveMessageReceipt:
   string ChatId; // 聊天室ID
   string MessageId; // 訊息ID
   int64 Timestamp; // 時間戳記
-  string[] RemovedMessageIds; // 訊息ID陣列
+  string[] RemovedMessageIds; // 實際刪除的訊息ID陣列
 ```
 
 ```bash
