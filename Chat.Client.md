@@ -222,7 +222,7 @@ JoinChatRequest:
 
 ```bash
 JoinChatResponse:
-  string MessageId; // 訊息ID
+  string MessageId; // 訊息ID. 可以用來比對JoinChatReceipt.MessageId
 ```
 
 ```bash
@@ -253,7 +253,7 @@ LeaveChatRequest:
 
 ```bash
 LeaveChatResponse:
-  string MessageId; // 訊息ID
+  string MessageId; // 訊息ID. 可以用來比對LeaveChatReceipt.MessageId
 ```
 
 ```bash
@@ -284,7 +284,7 @@ KickoutFromChatRequest:
 
 ```bash
 KickoutFromChatResponse:
-  string MessageId; // 訊息ID
+  string MessageId; // 訊息ID. 可以用來比對KickoutFromChatReceipt.MessageId
 ```
 
 ```bash
@@ -317,7 +317,7 @@ SendTextRequest:
 
 ```bash
 SendTextResponse:
-  string MessageId; // 訊息ID
+  string MessageId; // 訊息ID. 可以用來比對SendTextReceipt.MessageId
 ```
 
 ```bash
@@ -419,7 +419,7 @@ SendMessageReadRequest:
 
 ```bash
 SendMessageReadResponse:
-  string MessageId; // 訊息ID
+  string MessageId; // 訊息ID. 可以用來比對SendMessageReadReceipt.MessageId
 ```
 
 ```bash
@@ -453,7 +453,7 @@ RemoveMessageRequest:
 
 ```bash
 RemoveMessageResponse:
-  string MessageId; // 訊息ID
+  string MessageId; // 訊息ID. 可以用來比對RemoveMessageReceipt.MessageId
 ```
 
 ```bash
