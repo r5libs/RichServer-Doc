@@ -310,9 +310,9 @@ MessageResponseException:
 
 ```bash
 SendTextRequest:
-  string To; // 傳送給誰. 如果是私聊, 此欄位為玩家ID, 其餘為聊天室的ID
+  string To; // 傳送給誰. 如果是私聊, 此欄位為玩家ID, 其餘為聊天室ID
   string Text; // 文字內容
-  string RelatedMessageId; // 回覆訊息ID. 如果是要回覆某筆訊息, 此欄位為該筆訊息的ID, 否則為空字串
+  string RelatedMessageId; // 回覆訊息ID. 如果是要回覆某筆訊息, 此欄位為該筆的訊息ID, 否則為空字串
 ```
 
 ```bash
@@ -323,7 +323,7 @@ SendTextResponse:
 ```bash
 SendTextReceipt:
   string From; // 訊息發送者ID
-  string To; // 訊息接收者ID. 如果是私聊, 此欄位為玩家ID, 其餘為聊天室的ID
+  string To; // 訊息接收者ID. 如果是私聊, 此欄位為玩家ID, 其餘為聊天室ID
   string MessageId; // 訊息ID
   int64 Timestamp; // 時間戳記
   string RelatedMessageId; //回覆訊息ID
@@ -345,8 +345,8 @@ MessageResponseException:
 
 ```bash
 SendImageRequest:
-  string To; // 傳送給誰. 如果是私聊, 此欄位為玩家ID, 其餘為聊天室的ID
-  string RelatedMessageId; // 回覆訊息ID. 如果是要回覆某筆訊息, 此欄位為該筆訊息的ID, 否則為空字串
+  string To; // 傳送給誰. 如果是私聊, 此欄位為玩家ID, 其餘為聊天室ID
+  string RelatedMessageId; // 回覆訊息ID. 如果是要回覆某筆訊息, 此欄位為該筆的訊息ID, 否則為空字串
 ```
 
 ```bash
@@ -358,7 +358,7 @@ SendImageResponse:
 ```bash
 SendImageReceipt:
   string From; // 訊息發送者ID
-  string To; // 訊息接收者ID. 如果是私聊, 此欄位為玩家ID, 其餘為聊天室的ID
+  string To; // 訊息接收者ID. 如果是私聊, 此欄位為玩家ID, 其餘為聊天室ID
   string MessageId; // 訊息ID
   int64 Timestamp; // 時間戳記
   string RelatedMessageId; //回覆訊息ID
@@ -368,7 +368,7 @@ SendImageReceipt:
 ```bash
 SendImageCheckedReceipt:
   string From; // 訊息發送者ID
-  string To; // 訊息接收者ID. 如果是私聊, 此欄位為玩家ID, 其餘為聊天室的ID
+  string To; // 訊息接收者ID. 如果是私聊, 此欄位為玩家ID, 其餘為聊天室ID
   string MessageId; // 訊息ID. 這是影像已上傳完畢所產生的訊息ID
   int64 Timestamp; // 時間戳記
   string OriginalMessageId; // 訊息ID. 這是原本SendImageRequest所產生的訊息ID, 也就是SendImageResponse.MessageId
@@ -414,7 +414,7 @@ MessageResponseException:
 
 ```bash
 SendMessageReadRequest:
-  string To; // 傳送給誰. 如果是私聊, 此欄位為玩家ID, 其餘為聊天室的ID
+  string To; // 傳送給誰. 如果是私聊, 此欄位為玩家ID, 其餘為聊天室ID
 ```
 
 ```bash
@@ -425,7 +425,7 @@ SendMessageReadResponse:
 ```bash
 SendMessageReadReceipt:
   string From; // 訊息發送者ID
-  string To; // 訊息接收者ID. 如果是私聊, 此欄位為玩家ID, 其餘為聊天室的ID
+  string To; // 訊息接收者ID. 如果是私聊, 此欄位為玩家ID, 其餘為聊天室ID
   string MessageId; // 訊息ID. 這是影像已上傳完畢所產生的訊息ID
   int64 Timestamp; // 時間戳記
   string LastReadMessageId; // 最後一筆已讀訊息ID. 表示在這之前的訊息(包含這筆)都是已讀的
