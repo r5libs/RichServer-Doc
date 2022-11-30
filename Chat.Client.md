@@ -51,8 +51,8 @@ Server端必須提供一個RouteMessage函式, 可用來將訊息轉發到指定
 
 ## 如何呼叫 Server Api?
 
-```bash
-請求Api, 不等候回應(Message)
+```cs
+// 請求Api, 不等候回應(Message)
 
 SocketChannel.SendMessage("xxx.yyy", new aaaMessage()
 {
@@ -60,16 +60,16 @@ SocketChannel.SendMessage("xxx.yyy", new aaaMessage()
 });
 ```
 
-```bash
-請求Api, 並等候回應(Request/Response)
+```cs
+// 請求Api, 並等候回應(Request/Response)
 
-[方式1]
+// [方式1]
 aaaResponse response = await SocketChannel.SendRequest<aaaRequest, aaaResponse>("xxx.yyy", new aaaRequest()
 {
 
 });
 
-[方式2]
+// [方式2]
 SocketChannel.SendRequest("xxx.yyy", new aaaRequest()
 {
 
@@ -88,7 +88,7 @@ SocketChannel.SendRequest("xxx.yyy", new aaaRequest()
 
 ## 如何接收由 Server 主動通知的訊息?
 
-```bash
+```cs
 SocketChannel.Message += (string messageType, byte[] messagePayload) =>
 {
   switch (messageType)
@@ -123,10 +123,10 @@ SocketChannel.Message += (string messageType, byte[] messagePayload) =>
 
 ## 如何取得 MessageResponseException 的 ErrorCode
 
-```bash
-若Server Api執行異常, 則丟出MessageResponseException例外, 以下為提供的二種方式:
+```cs
+// 若Server Api執行異常, 則丟出MessageResponseException例外, 以下為提供的二種方式:
 
-[方式1]
+// [方式1]
 try
 {
   aaaResponse response = await SocketChannel.SendRequest<aaaRequest, aaaResponse>("xxx.yyy", new aaaRequest()
@@ -148,7 +148,7 @@ catch(Exception e)
   // e.StackTrace 發生例外時的CallStack(Server Side), 方便排除問題
 }
 
-[方式2]
+// [方式2]
 SocketChannel.SendRequest("xxx.yyy", new aaaRequest()
 {
 
