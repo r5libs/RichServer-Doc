@@ -23,7 +23,7 @@ response:
 ```
 
 ```bash
-example:
+test:
 curl -X POST -H 'Content-Type: application/x-www-form-urlencoded' -d 'data={"type":"messageContentUploaded","payload":{"chatId":"1111","userId":"2222","messageId":"3333","messageContentUrl":"http://1234/","messageContentType":1}}' http://192.168.1.114:17558/
 ```
 
@@ -42,7 +42,7 @@ response:
 ```
 
 ```bash
-example:
+test:
 curl -X POST -H 'Content-Type: application/x-www-form-urlencoded' -d 'data={"type":"joinChat","payload":{"chatId":"1111","userId":"2222"}}' http://192.168.1.114:17558/
 ```
 
@@ -61,7 +61,7 @@ response:
 ```
 
 ```bash
-example:
+test:
 curl -X POST -H 'Content-Type: application/x-www-form-urlencoded' -d 'data={"type":"leaveChat","payload":{"chatId":"1111","userId":"2222"}}' http://192.168.1.114:17558/
 ```
 
@@ -80,7 +80,7 @@ response:
 ```
 
 ```bash
-example:
+test:
 curl -X POST -H 'Content-Type: application/x-www-form-urlencoded' -d 'data={"type":"kickoutFromChat","payload":{"chatId":"1111","userIds":["1","2"]}}' http://192.168.1.114:17558/
 ```
 
@@ -98,7 +98,7 @@ response:
 ```
 
 ```bash
-example:
+test:
 curl -X POST -H 'Content-Type: application/x-www-form-urlencoded' -d 'data={"type":"dismissChat","payload":{"chatIds":["1111","2222"]}}' http://192.168.1.114:17558/
 ```
 
@@ -118,6 +118,6 @@ response:
 ```
 
 ```bash
-example:
+test:
 curl -X POST -H 'Content-Type: application/x-www-form-urlencoded' -d 'data={"type":"muteChat","payload":{"chatId":"1111","userId":"2222","timeLimit":0}}' http://192.168.1.114:17558/
 ```
