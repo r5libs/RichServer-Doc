@@ -32,7 +32,7 @@ response:
 
 ## 功能: inviteIntoTask 邀請加入任務
 
-> 轉發給任務聊天室指定成員
+> 轉發給任務聊天室指定成員(userId)
 
 ```bash
 request:
