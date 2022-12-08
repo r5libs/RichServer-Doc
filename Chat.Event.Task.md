@@ -1,6 +1,6 @@
 ## Api -> Server (-> App)
 
-## 功能: taskCreated 已創建任務
+## 功能: taskCreated 任務已創建
 
 ```bash
 request:
@@ -19,7 +19,7 @@ response:
   string message: 錯誤訊息
 ```
 
-## 功能: taskStarted 已開始任務
+## 功能: taskStarted 任務已開始
 
 > 轉發給任務聊天室所有成員
 
@@ -34,7 +34,7 @@ response:
   string message: 錯誤訊息
 ```
 
-## 功能: taskCanceled 已取消任務
+## 功能: taskCanceled 任務已取消
 
 > 轉發給任務聊天室所有成員
 
