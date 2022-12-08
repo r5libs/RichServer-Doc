@@ -1,5 +1,7 @@
 ## 功能: startTask 開始任務
 
+> 轉發給聊天室所有成員
+
 ```bash
 request:
   string chatId; 聊天室ID
@@ -13,6 +15,8 @@ response:
 
 ## 功能: cancelTask 取消任務
 
+> 轉發給聊天室所有成員
+
 ```bash
 request:
   string chatId; 聊天室ID
@@ -25,6 +29,8 @@ response:
 ```
 
 ## 功能: inviteIntoTask 邀請加入任務
+
+> 轉發給聊天室指定成員
 
 ```bash
 request:
