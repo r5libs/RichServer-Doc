@@ -520,7 +520,7 @@ ReceiptMessage:
 ```bash
 UserReceiptMessage:
   uint64 OpRevision; // 該筆回執訊息紀錄ID(App必須持續記錄此值. 下次開啟App時, 使用FetchMessage進行訊息同步)
-  bytes ReceiptMessage; // 對應ReceiptMessage結構
+  bytes ReceiptMessage; // 對應ReceiptMessage結構. 如果長度為0, 表示不須要處裡此訊息, 但OpRevision一樣要記錄
 ```
 
 ## chat.MuteChatMessage 通知聊天室成員已設定禁言
