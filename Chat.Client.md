@@ -296,7 +296,7 @@ MessageResponseException:
 ```bash
 KickoutFromChatRequest:
   string ChatId; // 聊天室ID
-  string MemberIds; // 聊天室成員ID(玩家ID)列表
+  string[] MemberIds; // 聊天室成員ID(玩家ID)列表
 ```
 
 ```bash
