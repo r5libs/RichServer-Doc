@@ -9,7 +9,7 @@ request:
 
 ```bash
 response:
-  int error; 0: 成功, -1: chatId不存在
+  int error; 0: 成功, -1: taskId不存在
 
   case error == 0:
     int type; 任務類型. 1: 揪運動, 2: 揪一起
