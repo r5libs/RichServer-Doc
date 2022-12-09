@@ -16,9 +16,8 @@ response:
     int mode; 任務模式
       揪運動: 101: 步數, 102: 里程
       揪一起: 201: 定位
-    int[] meetConditions; 任務達成條件列表
+    string[] meetConditions; 任務達成條件列表
       揪運動: [0]: 步數/里程目標
-    string[] meetConditions2; 任務達成條件列表2
       揪一起: [0]: GPS位置
 ```
 
