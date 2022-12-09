@@ -5,12 +5,6 @@
 ```bash
 request:
   string taskId; 聊天室(任務)ID
-  string taskName; 聊天室(任務)名稱
-  string taskCreator; 聊天室(任務)創建人
-  int taskType; 任務類型. 1: 揪運動
-  int taskMode; 任務模式. 揪運動: 101: 步數模式, 102: 里程模式, 揪一起: 201: 定位
-  string[] invitingUsers; 任務邀請列表(玩家ID)
-  int[] meetConditions; 任務達成條件列表. 揪運動: 0: 步數/里程目標
 ```
 
 ```bash
