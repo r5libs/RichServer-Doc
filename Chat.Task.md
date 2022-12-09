@@ -5,7 +5,9 @@
 ```bash
 - request:
   string taskId; 聊天室(任務)ID
-  list<{string userId}> userList; 當時在線的玩家列表
+  list<{
+    string userId
+  }> dataList;
 ```
 
 ```bash
