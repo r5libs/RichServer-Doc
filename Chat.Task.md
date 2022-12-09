@@ -6,7 +6,7 @@
 - request:
   string taskId; 聊天室(任務)ID
   list<{
-    string userId
+    string userId // 玩家ID
   }> dataList;
 ```
 
