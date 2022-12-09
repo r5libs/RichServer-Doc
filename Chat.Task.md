@@ -21,7 +21,7 @@
 - request:
   string taskId; 聊天室(任務)ID
 
-  case taskType == 揪運動:
+  case taskType == 1: // 揪運動
     list<{
       string userId, // 玩家ID
       string location, // GPS位置
