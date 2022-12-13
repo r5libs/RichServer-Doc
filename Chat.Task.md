@@ -29,7 +29,7 @@ response:
   list<{
     string userId, // 玩家ID
     string[] dataList // 更新的資料
-      揪運動: [0]: GPS位置, [1]: 移動量(步數/里程)
+      揪運動: [0]: GPS位置, [1]: 總移動量(步數/里程)
   }> userList;
 ```
 

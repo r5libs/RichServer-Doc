@@ -70,7 +70,7 @@ curl -X POST -H 'Content-Type: application/x-www-form-urlencoded' -d 'data={"typ
 ```bash
 request:
   string chatId; 聊天室ID
-  list<string> userIds; userId列表
+  list<string> userIds; 玩家ID列表
 ```
 
 ```bash

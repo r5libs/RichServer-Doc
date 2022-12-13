@@ -50,7 +50,7 @@ response:
 ```bash
 request:
   string taskId; 聊天室(任務)ID
-  string userId; 玩家ID
+  string userIds; 玩家ID列表
 ```
 
 ```bash

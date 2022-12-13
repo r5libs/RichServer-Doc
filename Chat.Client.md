@@ -110,6 +110,14 @@ SocketChannel.Message += (string messageType, byte[] messagePayload) =>
     // 通知聊天室成員已取消禁言
     case "chat.UnmuteChatMessage":
       break;
+
+    // 任務狀態異動通知
+    case "chat.UpdateTaskStatus":
+      break;
+
+    // 更新玩家在任務中的活動數據
+    case "chat.UpdateUserTask":
+      break;
   }
 };
 ```
@@ -501,6 +509,15 @@ DismissChatReceipt:
   int64 Timestamp; // 時間戳記
 ```
 
+## Api - chat.UpdateTask 更新任務活動數據
+
+```bash
+UpdateTaskMessage:
+  string TaskId; // 聊天室(任務)ID
+  string[] DataList;
+    // 揪運動: [0]: GPS位置, [1]: 移動量(步數/里程)
+```
+
 ## chat.SendMessageFailed 通知訊息傳送失敗
 
 ```bash
@@ -540,4 +557,28 @@ MuteChatMessage:
   string ChatId; // 聊天室ID
   int64 Timestamp; // 時間戳記(取消禁言時間)
   string MemberId; // 聊天室成員ID(玩家ID)
+```
+
+## chat.UpdateTaskStatus
+
+```bash
+TaskStatus:
+  CREATED = 0;
+  STARTED = 1;
+  COMPLETED = 2;
+  CANCELED = 3;
+
+UpdateTaskStatusMessage:
+  string TaskId; // 聊天室(任務)ID
+  TaskStatus Status; // TaskStatus.CREATED / TaskStatus.STARTED / TaskStatus.COMPLETED / TaskStatus.CANCELED
+```
+
+## chat.UpdateUserTask
+
+```bash
+UpdateUserTaskMessage:
+  string TaskId; // 聊天室(任務)ID
+  string UserId; // 玩家ID
+  string[] DataList;
+    // 揪運動: [0]: GPS位置, [1]: 總移動量(步數/里程)
 ```
