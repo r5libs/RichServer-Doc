@@ -20,7 +20,7 @@ response:
       揪運動: [0]: 步數/里程目標
       揪一起: [0]: GPS位置
     int64 expirationDate; 任務失效日期(timestamp格式)
-    int autoDismissSeconds; 任務結束後的解散時間(秒數)
+    int autoDismissSeconds; 任務結束後的解散時間(秒數). 0: 不解散
 ```
 
 ## 功能: updateTask 更新任務
