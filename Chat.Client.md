@@ -584,6 +584,8 @@ UpdateTaskStatusMessage:
 UpdateUserTaskDataMessage:
   string TaskId; // 聊天室(任務)ID
   string UserId; // 玩家ID
-  string[] DataList;
-    // 揪運動: [0]: GPS位置, [1]: 總移動量(步數/里程)
+  string[] TaskDataList;
+    // 揪運動: [0]: 所有玩家總移動量(步數/里程)
+  string[] UserDataList;
+    // 揪運動: [0]: GPS位置, [1]: 玩家個人總移動量(步數/里程)
 ```
