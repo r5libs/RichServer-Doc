@@ -26,7 +26,7 @@ response:
 ## 功能: updateTask 更新任務
 
 ```bash
-- request:
+request:
   string taskId; 聊天室(任務)ID
   string[] taskDataList // 任務更新的資料
     揪運動: [0]: 所有玩家總移動量(步數/里程)
@@ -38,7 +38,7 @@ response:
 ```
 
 ```bash
-- response:
+response:
   int error; 0: 成功, -1: taskId不存在, -2: task已結束
 
   case error == 0:
@@ -50,7 +50,7 @@ response:
 > userList 只包含在線玩家
 
 ```bash
-- request:
+request:
   string taskId; 聊天室(任務)ID
   list<{
     string userId // 玩家ID
@@ -58,7 +58,7 @@ response:
 ```
 
 ```bash
-- response:
+response:
   int error; 0: 成功, -1: taskId不存在, -2: task已結束
 
   case error == 0:
