@@ -120,8 +120,8 @@ SocketChannel.Message += (string messageType, byte[] messagePayload) =>
       break;
 
     // 更新玩家在任務中的活動數據
-    case "chat.UpdateUserTaskData":
-      // UpdateUserTaskDataMessage
+    case "chat.UpdateTaskData":
+      // UpdateTaskDataMessage
       break;
   }
 };
@@ -514,13 +514,13 @@ DismissChatReceipt:
   int64 Timestamp; // 時間戳記
 ```
 
-## Api - chat.UpdateTaskData 更新任務活動數據
+## Api - chat.UpdateTaskMemberData 更新任務活動數據
 
 ```bash
-UpdateTaskMessage:
+UpdateTaskMemberDataMessage:
   string TaskId; // 聊天室(任務)ID
-  string[] DataList;
-    // 揪運動: [0]: GPS位置, [1]: 移動量(步數/里程)
+  string[] MemberDataList;
+    // 揪運動: [0]: GPS位置(若不公開,請填""), [1]: 移動量(步數/里程)
 ```
 
 ## chat.SendMessageFailed 通知訊息傳送失敗
@@ -572,20 +572,27 @@ TaskStatus:
   STARTED = 1;
   COMPLETED = 2;
   CANCELED = 3;
+```
 
+```bash
 UpdateTaskStatusMessage:
   string TaskId; // 聊天室(任務)ID
   TaskStatus Status; // TaskStatus.CREATED / TaskStatus.STARTED / TaskStatus.COMPLETED / TaskStatus.CANCELED
 ```
 
-## chat.UpdateUserTaskData
+## chat.UpdateTaskData
 
 ```bash
-UpdateUserTaskDataMessage:
+TaskMemberData:
+  string MemberId; // 玩家ID
+  string[] MemberDataList;
+    // 揪運動: [0]: GPS位置(若不公開,則為""), [1]: 玩家個人總移動量(步數/里程)
+```
+
+```bash
+UpdateTaskDataMessage:
   string TaskId; // 聊天室(任務)ID
-  string UserId; // 玩家ID
   string[] TaskDataList;
     // 揪運動: [0]: 所有玩家總移動量(步數/里程)
-  string[] UserDataList;
-    // 揪運動: [0]: GPS位置, [1]: 玩家個人總移動量(步數/里程)
+  TaskMemberData[] Members;
 ```
