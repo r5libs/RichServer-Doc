@@ -16,11 +16,14 @@ response:
     int mode; 任務模式
       揪運動: 101: 步數, 102: 里程
       揪一起: 201: 定位
+
     string[] meetConditions; 任務達成條件列表
       揪運動: [0]: 步數/里程目標
       揪一起: [0]: GPS位置
+
     string[] dataList // 任務資料
       揪運動: [0]: 所有玩家總移動量(步數/里程)
+
     list<{
       string userId, // 玩家ID
       string[] dataList // 玩家資料
@@ -28,13 +31,9 @@ response:
     }> userList;
 
     int status: 任務狀態. 0: 尚未開始, 1:進行中, 2:已結束(任務聊天室還在)
-    case status == 0:
-      int64 expirationDate; 任務失效日期(timestamp格式)
-    case status == 1:
-      int autoDismissSeconds; 任務結束後的解散時間(秒數). 0: 不解散
-    case status == 2:
-      int64 completedDate; 任務結束時間
-      int autoDismissSeconds; 任務結束後的解散時間(秒數). 0: 不解散
+    int64 expirationDate; 任務失效日期(timestamp格式)
+    int64 completedDate; 任務結束時間. 0: 尚未結束
+    int autoDismissSeconds; 任務結束後的解散時間(秒數). 0: 不解散
 ```
 
 ## 功能: updateTask 更新任務
