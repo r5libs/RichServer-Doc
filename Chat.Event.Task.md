@@ -5,6 +5,8 @@
 ```bash
 request:
   string taskId; 聊天室(任務)ID
+  int64 expirationDate; 任務失效日期(timestamp格式)
+  int autoDismissSeconds; 任務結束後的解散時間(秒數). 0: 不解散
 ```
 
 ```bash

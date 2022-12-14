@@ -19,8 +19,13 @@ response:
     string[] meetConditions; 任務達成條件列表
       揪運動: [0]: 步數/里程目標
       揪一起: [0]: GPS位置
-    int64 expirationDate; 任務失效日期(timestamp格式)
-    int autoDismissSeconds; 任務結束後的解散時間(秒數). 0: 不解散
+    string[] taskDataList // 任務資料
+      揪運動: [0]: 所有玩家總移動量(步數/里程)
+    list<{
+      string userId, // 玩家ID
+      string[] dataList // 玩家資料
+        揪運動: [0]: GPS位置, [1]: 玩家個人總移動量(步數/里程)
+    }> userList;
 ```
 
 ## 功能: updateTask 更新任務
@@ -29,11 +34,9 @@ response:
 request:
   string taskId; 聊天室(任務)ID
   string[] taskDataList // 任務更新的資料
-    揪運動: [0]: 所有玩家總移動量(步數/里程)
   list<{
     string userId, // 玩家ID
     string[] dataList // 玩家更新的資料
-      揪運動: [0]: GPS位置, [1]: 玩家個人總移動量(步數/里程)
   }> userList;
 ```
 
