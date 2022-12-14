@@ -43,6 +43,8 @@ response:
 
 ## 功能: completeTask 完成任務
 
+> userList 只包含在線玩家
+
 ```bash
 - request:
   string taskId; 聊天室(任務)ID
@@ -53,5 +55,8 @@ response:
 
 ```bash
 - response:
-  int error; 0: 成功
+  int error; 0: 成功, -1: taskId不存在, -2: task已結束
+
+  case error == 0:
+    list<string> invalidUserIdList; 無效的筆數(userId不在聊天室). 這裡假設資料都是正確的, 所以只回傳有誤的
 ```
