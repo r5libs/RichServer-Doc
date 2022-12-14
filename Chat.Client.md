@@ -114,7 +114,7 @@ SocketChannel.Message += (string messageType, byte[] messagePayload) =>
       // UnmuteChatMessage
       break;
 
-    // 任務狀態異動通知
+    // 更新任務狀態
     case "chat.UpdateTaskStatus":
       // UpdateTaskStatusMessage
       break;
