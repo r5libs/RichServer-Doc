@@ -21,18 +21,18 @@ response:
       揪運動: [0]: 步數/里程目標
       揪一起: [0]: GPS位置
 
-    string[] dataList // 任務資料
+    string[] dataList // 任務資料. 透過updateTask更新
       揪運動: [0]: 所有玩家總移動量(步數/里程)
 
     list<{
       string userId, // 玩家ID
       string[] dataList // 玩家資料
         揪運動: [0]: GPS位置, [1]: 玩家個人總移動量(步數/里程)
-    }> userList;
+    }> userList; // 透過updateTask更新
 
     int status: 任務狀態. 0: 尚未開始, 1:進行中, 2:已結束(任務聊天室還在)
-    int64 expirationDate; 任務失效日期(timestamp格式)
-    int64 completedDate; 任務結束時間. 0: 尚未結束
+    int64 dueDate; 任務失效日期(timestamp格式)
+    int64 completedDate; 任務結束時間(timestamp格式). 0: 尚未結束
     int autoDismissSeconds; 任務結束後的解散時間(秒數). 0: 不解散
 ```
 
@@ -41,10 +41,10 @@ response:
 ```bash
 request:
   string taskId; 聊天室(任務)ID
-  string[] taskDataList // 任務更新的資料
+  string[] taskDataList // 更新任務資料
   list<{
     string userId, // 玩家ID
-    string[] dataList // 玩家更新的資料
+    string[] dataList // 更新玩家資料
   }> userList;
 ```
 
