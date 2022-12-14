@@ -116,7 +116,7 @@ SocketChannel.Message += (string messageType, byte[] messagePayload) =>
       break;
 
     // 更新玩家在任務中的活動數據
-    case "chat.UpdateUserTask":
+    case "chat.UpdateUserDataTask":
       break;
   }
 };
@@ -509,7 +509,7 @@ DismissChatReceipt:
   int64 Timestamp; // 時間戳記
 ```
 
-## Api - chat.UpdateTask 更新任務活動數據
+## Api - chat.UpdateTaskData 更新任務活動數據
 
 ```bash
 UpdateTaskMessage:
@@ -573,7 +573,7 @@ UpdateTaskStatusMessage:
   TaskStatus Status; // TaskStatus.CREATED / TaskStatus.STARTED / TaskStatus.COMPLETED / TaskStatus.CANCELED
 ```
 
-## chat.UpdateUserTask
+## chat.UpdateUserTaskData
 
 ```bash
 UpdateUserTaskMessage:
