@@ -88,6 +88,7 @@ SocketChannel.Message += (string messageType, byte[] messagePayload) =>
   {
     // 通知訊息傳送失敗(SendText/SendImage等Api執行失敗時)
     case "chat.SendMessageFailed":
+      // SendMessageFailedMessage
       break;
 
     // 通知有新增的聊天室內容
@@ -105,18 +106,22 @@ SocketChannel.Message += (string messageType, byte[] messagePayload) =>
 
     // 通知聊天室成員已設定禁言
     case "chat.MuteChatMessage":
+      // MuteChatMessage
       break;
 
     // 通知聊天室成員已取消禁言
     case "chat.UnmuteChatMessage":
+      // UnmuteChatMessage
       break;
 
     // 任務狀態異動通知
     case "chat.UpdateTaskStatus":
+      // UpdateTaskStatusMessage
       break;
 
     // 更新玩家在任務中的活動數據
-    case "chat.UpdateUserDataTask":
+    case "chat.UpdateUserTaskData":
+      // UpdateUserTaskDataMessage
       break;
   }
 };
@@ -553,7 +558,7 @@ MuteChatMessage:
 ## chat.UnmuteChatMessage 通知聊天室成員已取消禁言
 
 ```bash
-MuteChatMessage:
+UnmuteChatMessage:
   string ChatId; // 聊天室ID
   int64 Timestamp; // 時間戳記(取消禁言時間)
   string MemberId; // 聊天室成員ID(玩家ID)
@@ -576,7 +581,7 @@ UpdateTaskStatusMessage:
 ## chat.UpdateUserTaskData
 
 ```bash
-UpdateUserTaskMessage:
+UpdateUserTaskDataMessage:
   string TaskId; // 聊天室(任務)ID
   string UserId; // 玩家ID
   string[] DataList;
