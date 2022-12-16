@@ -24,24 +24,24 @@ response:
       揪一起:
         201: [0]: GPS位置, [1]: 任務報到時間(指定時間內, 玩家到達指定地點才可以報到), [2]: 任務結束時間(指定時間內, 任務沒完成就算失敗)
 
-    string[] dataList // 任務資料. 透過updateTask更新
+    string[] dataList; 任務資料. 透過updateTask更新
       揪運動:
         101: [0]: 所有玩家總步數
         102: [0]: 所有玩家總里程
       揪一起:
-        201: [0]: 第幾階段(階段1: 到達定位位置, 階段2: 聊天100句), [1]: 聊天句數
+        201: [0]: 第幾階段(階段1: 到達定位位置, 階段2: 聊天100句), [1]: 所有玩家總聊天句數
 
     list<{
-      string userId, // 玩家ID
-      string[] dataList // 玩家資料
+      string userId, 玩家ID
+      string[] dataList 玩家資料
         揪運動:
           101: [0]: GPS位置, [1]: 玩家個人總步數
           102: [0]: GPS位置, [1]: 玩家個人總里程
         揪一起:
           201: [0]: 確認到達(0 or 1), [1]: 確認開始(0 or 1)
-    }> userList; // 透過updateTask更新
+    }> userList; 透過updateTask更新
 
-    int status: 任務狀態. 0: 尚未開始, 1:進行中, 2:已結束(失敗), 3:已結束(完成)
+    int status: 任務狀態. 0: 尚未開始, 1:進行中, 2:已結束(失敗), 3:已結束(成功)
     int autoDismissSeconds; 任務結束後的解散時間(秒數). 0: 不解散
 ```
 
@@ -50,10 +50,10 @@ response:
 ```bash
 request:
   string taskId; 聊天室(任務)ID
-  string[] taskDataList // 更新任務資料
+  string[] taskDataList; 任務資料
   list<{
-    string userId, // 玩家ID
-    string[] dataList // 更新玩家資料
+    string userId, 玩家ID
+    string[] dataList 玩家資料
   }> userList;
 ```
 
