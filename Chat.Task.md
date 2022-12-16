@@ -72,6 +72,7 @@ response:
 ```bash
 request:
   string taskId; 聊天室(任務)ID
+  int status; 0: 成功, 1: 失敗
   list<{
     string userId // 玩家ID
   }> userList;
