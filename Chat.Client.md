@@ -520,7 +520,9 @@ DismissChatReceipt:
 UpdateTaskMemberDataMessage:
   string TaskId; // 聊天室(任務)ID
   string[] MemberDataList;
-    // 揪運動: [0]: GPS位置(若不公開,請填""), [1]: 移動量(步數/里程)
+    揪運動:
+      101: [0]: GPS位置(若不公開,請填""), [1]: 玩家個人步數
+      102: [0]: GPS位置(若不公開,請填""), [1]: 玩家個人里程
 ```
 
 ## chat.SendMessageFailed 通知訊息傳送失敗
@@ -567,17 +569,9 @@ UnmuteChatMessage:
 ## chat.UpdateTaskStatus
 
 ```bash
-TaskStatus:
-  CREATED = 0;
-  STARTED = 1;
-  COMPLETED = 2;
-  CANCELED = 3;
-```
-
-```bash
 UpdateTaskStatusMessage:
   string TaskId; // 聊天室(任務)ID
-  TaskStatus Status; // TaskStatus.CREATED / TaskStatus.STARTED / TaskStatus.COMPLETED / TaskStatus.CANCELED
+  int Status; // 0: 尚未開始, 1: 進行中, 2: 已結束(失敗), 3: 已結束(成功), 4: 已取消
 ```
 
 ## chat.UpdateTaskData
@@ -586,13 +580,21 @@ UpdateTaskStatusMessage:
 TaskMemberData:
   string MemberId; // 玩家ID
   string[] MemberDataList;
-    // 揪運動: [0]: GPS位置(若不公開,則為""), [1]: 玩家個人總移動量(步數/里程)
+    揪運動:
+      101: [0]: GPS位置(若不公開,則為""), [1]: 玩家個人總步數
+      102: [0]: GPS位置(若不公開,則為""), [1]: 玩家個人總里程
+    揪一起:
+      201: [0]: 已確認報到(0 or 1), [1]: 已確認開始(0 or 1)
 ```
 
 ```bash
 UpdateTaskDataMessage:
   string TaskId; // 聊天室(任務)ID
   string[] TaskDataList;
-    // 揪運動: [0]: 所有玩家總移動量(步數/里程)
+    揪運動:
+      101: [0]: 所有玩家總步數
+      102: [0]: 所有玩家總里程
+    揪一起:
+      201: [0]: 1: 等候報到, 2: 等候開始(下一階段), 3: 進行聊天100句, [1]: 所有玩家總聊天句數
   TaskMemberData[] Members;
 ```
