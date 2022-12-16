@@ -123,6 +123,11 @@ SocketChannel.Message += (string messageType, byte[] messagePayload) =>
     case "chat.UpdateTaskData":
       // UpdateTaskDataMessage
       break;
+
+    // 邀請進入任務
+    case "chat.InviteIntoTask":
+      // InviteIntoTaskMessage
+      break;
   }
 };
 ```
@@ -597,4 +602,9 @@ UpdateTaskDataMessage:
     揪一起:
       201: [0]: 1: 等候報到, 2: 等候開始(下一階段), 3: 進行聊天100句, [1]: 所有玩家總聊天句數
   TaskMemberData[] Members;
+```
+
+```bash
+InviteIntoTaskMessage:
+  string TaskId; // 聊天室(任務)ID
 ```
