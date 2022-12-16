@@ -604,6 +604,8 @@ UpdateTaskDataMessage:
   TaskMemberData[] Members;
 ```
 
+## chat.InviteIntoTask
+
 ```bash
 InviteIntoTaskMessage:
   string TaskId; // 聊天室(任務)ID
