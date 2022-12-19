@@ -41,7 +41,7 @@ response:
           201: [0]: 已確認報到(0 or 1), [1]: 已確認開始(0 or 1)
     }> userList; 透過updateTask更新
 
-    int status: 任務狀態. 0: 尚未開始, 1: 進行中, 2: 已結束(失敗), 3: 已結束(成功), 4: 已取消
+    int status: 任務狀態. 0: 尚未開始, 1: 進行中, 2: 已結束(失敗), 3: 已結束(成功), 4: 已取消, 5: 已結束(autoDismissSeconds)
     int autoDismissSeconds; 任務結束後的解散時間(秒數). 0: 不解散
 ```
 
