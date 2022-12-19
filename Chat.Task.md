@@ -72,7 +72,7 @@ response:
 ```bash
 request:
   string taskId; 聊天室(任務)ID
-  int status; 0: 成功, 1: 失敗(超過結束時間)
+  int status; 2: 已結束(失敗), 3: 已結束(成功)
   list<{
     string userId // 玩家ID
   }> userList;
