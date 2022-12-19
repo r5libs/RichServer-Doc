@@ -128,6 +128,11 @@ SocketChannel.Message += (string messageType, byte[] messagePayload) =>
     case "chat.InviteIntoTask":
       // InviteIntoTaskMessage
       break;
+
+    // 請求加入任務
+    case "chat.RequestIntoTask":
+      // RequestIntoTaskMessage
+      break;
   }
 };
 ```
@@ -609,4 +614,12 @@ UpdateTaskDataMessage:
 ```bash
 InviteIntoTaskMessage:
   string TaskId; // 聊天室(任務)ID
+```
+
+## chat.RequestIntoTask
+
+```bash
+RequestIntoTaskMessage:
+  string TaskId; // 聊天室(任務)ID
+  string UserId; // 請求者ID
 ```
