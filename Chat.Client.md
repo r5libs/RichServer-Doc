@@ -581,7 +581,7 @@ UnmuteChatMessage:
 ```bash
 UpdateTaskStatusMessage:
   string TaskId; // 聊天室(任務)ID
-  int Status; // 0: 尚未開始, 1: 進行中, 2: 已結束(失敗), 3: 已結束(成功), 4: 已取消
+  int Status; // 0: 尚未開始, 1: 進行中, 2: 已結束(失敗), 3: 已結束(成功), 4: 已取消, 5: 已結束(autoDismissSeconds)
 ```
 
 ## chat.UpdateTaskData
