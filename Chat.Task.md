@@ -84,4 +84,7 @@ response:
 
   case error == 0:
     list<string> invalidUserIdList; 無效的筆數(userId不在聊天室). 這裡假設資料都是正確的, 所以只回傳有誤的
+
+    case status == 3:
+      int rewardType; 任務完成時的獎勵
 ```
