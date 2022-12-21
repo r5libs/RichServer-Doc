@@ -87,5 +87,5 @@ response:
 
     case status == 3: 
       int rewardType; 任務完成時的獎勵(只有當status為3時, 此值才有意義)
-      int tokenType; 代幣類型
+      int tokenType; 代幣類型. 0: Rock幣, 1: 水晶碎片(只有當status為3時, 此值才有意義)
 ```
