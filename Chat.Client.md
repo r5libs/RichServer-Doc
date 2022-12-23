@@ -535,6 +535,16 @@ UpdateTaskMemberDataMessage:
       102: [0]: GPS位置(若不公開,請填""), [1]: 玩家個人里程
 ```
 
+## Api - Connector.Ping 固定時間 PingServer
+
+```bash
+PingRequest:
+  int Key; // 第一次Ping時寫入0, 之後寫入每次PingResponse回傳的Key值
+
+PingResponse:
+  int Key; // 下一次Ping時需要攜帶的Key
+```
+
 ## chat.SendMessageFailed 通知訊息傳送失敗
 
 ```bash
