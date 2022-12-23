@@ -538,10 +538,10 @@ UpdateTaskMemberDataMessage:
 ## Api - Connector.Ping 固定時間 PingServer
 
 ```bash
-PingRequest:
-  int Key; // 第一次Ping時寫入0, 之後寫入每次PingResponse回傳的Key值
+PingMessage:
+  int Key; // 第一次Ping時寫入0, 之後寫入每次PongMessage回傳的Key值
 
-PingResponse:
+PongMessage:
   int Key; // 下一次Ping時需要攜帶的Key
 ```
 
