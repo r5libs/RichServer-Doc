@@ -543,6 +543,7 @@ PingMessage:
 
 PongMessage:
   int Key; // 下一次Ping時需要攜帶的Key
+  int Seconds; // // 下一次Ping的時間(幾秒後再Ping一次)
 ```
 
 ## chat.SendMessageFailed 通知訊息傳送失敗
