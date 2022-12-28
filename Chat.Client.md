@@ -527,14 +527,18 @@ DismissChatReceipt:
 ## Api - chat.UpdateTaskMemberData 更新任務活動數據
 
 ```bash
-UpdateTaskMemberDataMessage:
+UpdateTaskMemberDataRequest:
   string TaskId; // 聊天室(任務)ID
   string[] MemberDataList;
     揪運動:
       101: [0]: GPS位置(若不公開,請填""), [1]: 玩家個人步數(相對值)
       102: [0]: GPS位置(若不公開,請填""), [1]: 玩家個人里程(相對值)
     揪一起:
-      201: [0]: 已確認報到(0 or 1), [1]: 已確認開始(0 or 1), [2]: 玩家個人聊天句數(絕對值), [3]: GPS位置
+      201: [0]: 已確認報到(0 or 1), [1]: 已確認開始(0 or 1), [2]: 玩家個人聊天總句數, [3]: GPS位置
+```
+
+```bash
+UpdateTaskMemberDataResponse:
 ```
 
 ## Api - Connector.Ping 固定時間 PingServer
