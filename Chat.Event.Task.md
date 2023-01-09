@@ -1,6 +1,6 @@
 ## Api -> Server (-> App)
 
-## 功能: officialTaskCreated 官方任務已創建
+## 功能: setupOfficialTask 設定官方任務
 
 ```bash
 request:
