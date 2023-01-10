@@ -48,7 +48,7 @@ response:
             values[1]: 數值1出現機率
             values[2]: 數值2
             values[3]: 數值2出現機率
-      }> availableContentList;
+      }> availableContentList; 計算物品內容物可選的方式
     }> itemList; 物品配置列表
 ```
 
