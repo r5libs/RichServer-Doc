@@ -1,6 +1,6 @@
 ## Server -> Api
 
-## 功能: getAllOfficialTaskIds 取得目前所有官方任務列表
+## 功能: getAllOfficialTaskIds 取得所有官方任務列表
 
 ```bash
 request:
@@ -61,6 +61,11 @@ request:
   string itemToken; 取得的物品Token
 ```
 
+```bash
+response:
+  int error; 0: 成功, -1: taskId不存在, -2: task尚未開始, -3: task已結束, -4: 物品token無效, -5: 物品不可取(如CD期間)
+```
+
 ## 功能: updateOfficialTaskItems 更新官方任務物品
 
 ```bash
@@ -68,7 +73,7 @@ request:
   string taskId; 聊天室(任務)ID
   list<{
     string token; 物品token
-    int64 activationTime; 物品可被拿取時間(時間戳). CD結束後的時間
+    int64 activationTime; 物品下次可被拿取的時間(時間戳). 這裡被計算為CD結束後的時間
     int contentType; 物品種類. 1: 幣(數量), 2: 拼圖(id), 3: 徽章(數量)
     int contentValue; 物品內容物(根據method所產生的數值)
   }> itemList; 物品配置列表
@@ -77,4 +82,10 @@ request:
 ```bash
 response:
   int error; 0: 成功, -1: taskId不存在, -2: task尚未開始, -3: task已結束
+
+  case error == 0:
+    list<{
+      string token; 物品原token
+      string refreshToken; 物品更新後的token
+    }> itemList;
 ```
