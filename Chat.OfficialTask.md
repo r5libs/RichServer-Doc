@@ -24,6 +24,8 @@ response:
   int error; 0: 成功, -1: taskId不存在
 
   case error == 0:
+    int mode; 任務模式: 1: 海線美食大冒險
+
     int64 startTime; 任務活動開始時間
     int64 endTime; 任務活動結束時間
 
