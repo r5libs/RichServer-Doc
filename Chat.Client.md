@@ -642,3 +642,10 @@ RequestIntoTaskMessage:
   string TaskId; // 聊天室(任務)ID
   string UserId; // 請求者ID
 ```
+
+## chat.NotifyTaskCompleted
+
+```bash
+NotifyTaskCompletedMessage:
+  string TaskId; // 聊天室(任務)ID
+```
