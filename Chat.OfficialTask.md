@@ -73,7 +73,7 @@ request:
   string taskId; 聊天室(任務)ID
   list<{
     string token; 物品token
-    int64 activationTime; 物品下次可被拿取的時間(時間戳). 這裡被計算為CD結束後的時間
+    int64 activationTime; 物品下次可被拿取的時間(時間戳). 這裡被計算為CD結束後的時間, 但若是首次設定, 則直接回傳getOfficialTask所取得的時間
     int contentType; 物品種類. 1: 幣(數量), 2: 拼圖(id), 3: 徽章(數量)
     int contentValue; 物品內容物(根據method所產生的數值)
   }> itemList; 物品配置列表
