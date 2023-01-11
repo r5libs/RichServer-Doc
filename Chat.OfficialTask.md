@@ -90,9 +90,7 @@ response:
     list<{
       string token; 物品原token
       string refreshToken; 物品更新後的token
-    }> itemList;
-
-    list<string> invalidItemTokenList; 無效的物品Token筆數
+    }> itemList; 更新後的物品列表
 ```
 
 ## 功能: updateOfficialTaskStatus 更新官方任務狀態
