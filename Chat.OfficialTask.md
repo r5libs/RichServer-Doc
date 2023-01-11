@@ -21,7 +21,7 @@ request:
 
 ```bash
 response:
-  int error; 0: 成功, -1: taskMode不存在
+  int error; 0: 成功, -1: task不存在
 
   case error == 0:
     int status: 任務狀態. 0: 尚未開始, 1: 進行中, 2: 已結束(失敗), 3: 已結束(成功), 4: 已取消
@@ -65,7 +65,7 @@ request:
 
 ```bash
 response:
-  int error; 0: 成功, -1: taskMode不存在, -2: task尚未開始, -3: task已結束, -4: 物品token無效, -5: 物品不可取(如CD期間)
+  int error; 0: 成功, -1: task不存在, -2: task尚未開始, -3: task已結束, -4: 物品token無效, -5: 物品不可取(如CD期間)
 ```
 
 ## 功能: updateOfficialTaskItems 更新官方任務物品
@@ -84,7 +84,7 @@ request:
 
 ```bash
 response:
-  int error; 0: 成功, -1: taskMode不存在, -2: task尚未開始, -3: task已結束
+  int error; 0: 成功, -1: task不存在, -2: task尚未開始, -3: task已結束
 
   case error == 0:
     list<{
@@ -100,4 +100,10 @@ response:
 ```bash
 request:
   string taskMode; 任務模式
+  int status: 任務狀態. 2: 已結束(失敗), 3: 已結束(成功), 4: 已取消
+```
+
+```bash
+response:
+  int error; 0: 成功, -1: task不存在, -2: task尚未開始, -3: task已結束
 ```
