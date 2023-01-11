@@ -26,6 +26,8 @@ response:
   case error == 0:
     int mode; 任務模式: 1: 海線美食大冒險
 
+    int status: 任務狀態. 0: 尚未開始, 1: 進行中, 2: 已結束(失敗), 3: 已結束(成功), 4: 已取消
+
     int64 startTime; 任務活動開始時間
     int64 endTime; 任務活動結束時間
 
@@ -91,3 +93,5 @@ response:
       string refreshToken; 物品更新後的token
     }> itemList;
 ```
+
+## 功能: completeOfficialTask 完成官方任務
