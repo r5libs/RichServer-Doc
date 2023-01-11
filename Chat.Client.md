@@ -599,8 +599,6 @@ UnmuteChatMessage:
 UpdateTaskStatusMessage:
   string TaskId; // 聊天室(任務)ID
   int Status; // 0: 尚未開始, 1: 進行中, 2: 已結束(失敗), 3: 已結束(成功), 4: 已取消, 5: 已結束(autoDismissSeconds)
-  int RewardType; 任務完成時的獎勵(只有當status為3時, 此值才有意義)
-  int TokenType; 代幣類型. 0: Rock幣, 1: 水晶碎片(只有當status為3時, 此值才有意義)
 ```
 
 ## chat.UpdateTaskData

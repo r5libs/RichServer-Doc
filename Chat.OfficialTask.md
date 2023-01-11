@@ -105,3 +105,18 @@ request:
 response:
   int error; 0: 成功, -1: task不存在, -2: task尚未開始, -3: task已結束
 ```
+
+## 功能: queryOfficialTaskMode 經由聊天室 ID 查詢官方任務模式
+
+```bash
+request:
+  string chatId; 聊天室ID
+```
+
+```bash
+response:
+  int error; 0: 成功, -1: chatId不存在, -2: chatId不屬於官方任務(團)
+
+  case error == 0:
+    int taskMode; 任務模式
+```
